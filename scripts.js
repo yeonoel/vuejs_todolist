@@ -27,6 +27,9 @@ const todoLite = {
         addSelection(item){
             item.isDone = !item.isDone;
                 
+        },
+        removeAllItem() {
+            this.todos= []
         }
     }
     
