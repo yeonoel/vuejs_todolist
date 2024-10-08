@@ -19,7 +19,8 @@ const todoLite = {
         addnewToDo(){
             if (this.newtodo.do) {
                 this.todos.push({do: this.newtodo.do, isDone: false});
-                this.newtodo = { } 
+                this.newtodo = { }
+                localStorage.setItem('todos', JSON.stringify(this.todos) )
             } else {
                 alert("Vous n'avez entré de tache")
             }
@@ -28,10 +29,15 @@ const todoLite = {
             item.isDone = !item.isDone;
                 
         },
-        removeAllItem() {
-            this.todos= []
-        }
-    }
+        
+    },
+    created() {
+        this.todos = localStorage.getItem("todos") ? JSON.parse(localStorage.getItem("todos")) : this.todos;
+    },
+    updated() {
+        localStorage.setItem('todos', JSON.stringify(this.todos) )
+
+    },
     
 };
 
